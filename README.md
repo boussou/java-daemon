@@ -4,26 +4,27 @@ How to run a Java Program as a daemon on Debian &amp; Ubuntu
 
 Borrowed from:
 
-How to run a Java Program as a daemon (service) on Linux (SUSE/openSUSE) using a shell script
-http://www.source-code.biz/snippets/java/7.htm
+> How to run a Java Program as a daemon (service) on Linux (SUSE/openSUSE) using a shell script
+> http://www.source-code.biz/snippets/java/7.htm
 
 **I just adapted it to Debian 7**
 
-Changes:
+Changes I made (so far):
 
 - no external dependancy to other scripts : removed dependancy to rc.status (not existing in Debian)
-- 1 or 2 quickfix (chown was absent, shell variables, checkProcessIsOurService
-- replaced sudo by su
-- I separated the derived variables
+- 1 or 2 quickfix (chown was absent, shell variables, checkProcessIsOurService..)
+- replaced sudo by su (why sudo?)
+- I separated the derived variables from the main variables
 
 
 # Why I did it?
 
-I first used the Apache Jakarta Commons Daemon package (Jsvc).
-The problem is...after a while it ate 80% CPU for no reason.
-And...no time to try to fix this.
+I first used the Apache Jakarta Commons Daemon package (Jsvc) http://jakarta.apache.org/commons/daemon/.
+The problem is... on prod, after a while it ate 80% CPU.
+For no reason (because it happens when the program is waiting on inotify events).
+No time to try to fix this.
 
-(I did not consider the Java Service Wrapper: not open source, it will not run on my servers)
+(side note: I did not consider the Java Service Wrapper http://wrapper.tanukisoftware.org/: not open source, it will not run on my servers)
 
 Then I was about to write a quick script based on nohup, when I found that one.
 
