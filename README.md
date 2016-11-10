@@ -1,4 +1,4 @@
-# java-daemon
+# java daemon
 
 How to run a Java Program as a daemon on Debian &amp; Ubuntu
 
@@ -10,7 +10,6 @@ Borrowed from:
 **I just adapted it to Debian 7**
 
 Changes I made (so far):
-
 - no external dependancy to other scripts : removed dependancy to rc.status (not existing in Debian)
 - 1 or 2 quickfix (chown was absent, shell variables, checkProcessIsOurService..)
 - replaced sudo by su (why sudo?)
@@ -27,10 +26,10 @@ No time to try to fix this.
 (side note: I did not consider the Java Service Wrapper http://wrapper.tanukisoftware.org/: not open source, it will not run on my servers)
 
 Then I was about to write a quick script based on nohup, when I found that one.
+Perfect. It use 100% shell, and detaches correclty the java process: Great.
 
-I find it easier to debug/understand than the /etc/init.d/skeleton
+I know there exists a standard scripts with Debian,  but honestly,  I find this one easier to debug/understand than the /etc/init.d/skeleton.
 start-stop-deamon is far too opaque to me.
-
 
 
 # Features
@@ -42,7 +41,6 @@ The shell script (javaDaemonTest.sh) provides the following functionality:
 - Install/uninstall the daemon as a Linux service.
   (The "install" procedure installs the script in /etc/init.d, enables the service in the configured default runlevels,
   creates the "rc" command (symlink) and creates the Linux user (as a system account) and group if necessary).
-
 
 # Thanks
 
