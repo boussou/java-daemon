@@ -14,7 +14,7 @@ Changes I made (so far):
 - 1 or 2 quickfix (chown was absent, shell variables, checkProcessIsOurService..)
 - replaced sudo by su (why sudo?)
 - I separated the derived variables from the main variables
-
+- you can uncheck to debug variable to check variables values
 
 # Why I did it?
 
